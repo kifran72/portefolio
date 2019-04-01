@@ -19,7 +19,7 @@ let mariadb = require('mariadb');
 let con = mariadb.createPool({
   host: 'localhost',
   user: 'root',
-  password: '',
+  password: 'toor',
   database: 'portefolio',
 });
 const multer = require('multer');
