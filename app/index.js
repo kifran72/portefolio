@@ -38,10 +38,14 @@ app.post('/getFile', upload.single('file-to-upload'), (req, res) => {
 });
 
 
-con.getConnection(function(err) {
-  if (err) throw err;
-  console.log('BDD Connected!');
-});
+con.getConnection()
+    .then(() => {
+      console.log('BDD Connected!');
+    }).catch((err) => {
+      console.log('Not Connected!', err);
+    });
+
+
 require('../config/socket')(io);
 
 // Moment FR
