@@ -26,7 +26,6 @@ app.controller('loginUser', ($scope, $http, $window, $timeout) => {
   // Création de la fonction loginUser pour permmettre l'envoie du username et password par la route crée "/login"
   // et si la reponse de la route est true rediriger vers "/" sinon message d'erreur
   $scope.loginUser = () => {
-    console.log($scope.alert);
     username = $scope.username;
     password = $scope.password;
     $http.post('/login', {

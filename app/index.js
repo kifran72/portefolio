@@ -7,21 +7,21 @@ let io = require('socket.io')(http);
 let twig = require('twig');
 let bodyParser = require('body-parser');
 let session = require('express-session');
-// let mysql = require('mysql');
-// let con = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'root',
-//   password: '',
-//   database: 'portefolio',
-// });
-
-let mariadb = require('mariadb');
-let con = mariadb.createPool({
+let mysql = require('mysql');
+let con = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'toor',
+  password: '',
   database: 'portefolio',
 });
+
+// let mariadb = require('mariadb');
+// let con = mariadb.createPool({
+//   host: 'localhost',
+//   user: 'root',
+//   password: 'toor',
+//   database: 'portefolio',
+// });
 const multer = require('multer');
 const upload = multer({
   dest: 'app/img/', // this saves your file into a directory called "uploads"
@@ -37,13 +37,17 @@ app.post('/getFile', upload.single('file-to-upload'), (req, res) => {
   res.redirect('/');
 });
 
+con.connect(function(err) {
+  if (err) throw err;
+  console.log('BDD Connected!');
+});
 
-con.getConnection()
-    .then(() => {
-      console.log('BDD Connected!');
-    }).catch((err) => {
-      console.log('Not Connected!', err);
-    });
+// con.getConnection()
+//     .then(() => {
+//       console.log('BDD Connected!');
+//     }).catch((err) => {
+//       console.log('Not Connected!', err);
+//     });
 
 
 require('../config/socket')(io);
