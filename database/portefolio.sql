@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 26 nov. 2018 à 22:28
+-- Généré le :  lun. 01 avr. 2019 à 22:40
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -19,21 +19,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `messagerapp`
+-- Base de données :  `portefolio`
 --
-
--- --------------------------------------------------------
-
---
--- Structure de la table `images`
---
-
-DROP TABLE IF EXISTS `images`;
-CREATE TABLE IF NOT EXISTS `images` (
-  `id_image` int(50) NOT NULL AUTO_INCREMENT,
-  `URL` text NOT NULL,
-  PRIMARY KEY (`id_image`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -51,24 +38,6 @@ CREATE TABLE IF NOT EXISTS `messages` (
   KEY `id_user` (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
---
--- Déchargement des données de la table `messages`
---
-
-INSERT INTO `messages` (`id_message`, `id_user`, `message`, `created_at`) VALUES
-(1, 1, 'Coucou ça va ?', '2018-04-13 20:13:35'),
-(2, 1, 'qsdfqsd', '2018-04-13 22:06:11'),
-(3, 1, 'lolilol', '2018-04-13 22:10:16'),
-(4, 1, 'lol', '2018-04-13 22:11:48'),
-(5, 4, 'Salut !', '2018-04-13 22:11:52'),
-(6, 6, 'hey boys', '2018-04-13 22:14:45'),
-(7, 1, 'lol', '2018-04-13 22:16:46'),
-(8, 6, 'qsdqsd', '2018-04-13 22:16:49'),
-(9, 6, 'hello boy', '2018-11-26 21:55:29'),
-(10, 7, 'ça va ?', '2018-11-26 21:55:32'),
-(11, 6, 'Ouiiiiiii', '2018-11-26 21:55:38'),
-(12, 7, 'hahahahahahahhahahah', '2018-11-26 21:55:43');
-
 -- --------------------------------------------------------
 
 --
@@ -84,18 +53,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `account_type` int(11) NOT NULL,
   `img_url` text NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id_user`, `username`, `mail_users`, `password`, `account_type`, `img_url`) VALUES
-(1, 'kifran', 'rizzon.charles@gmail.com', 'just4service', 0, '0'),
-(4, 'sdfsdf', 'sdfsd', 'aze', 0, '0'),
-(5, 'aze', 'aze', 'aze', 0, '0'),
-(6, 'dianophe', 'rizzon.charles@gmail.com', 'toor', 0, '0'),
-(7, 'kifran', 'kifran', 'toor', 0, 'https://img-19.ccm2.net/nk1eHVlqfdoTvhQItQ2WE6Jbj70=/91a1e9868ec347bcb203ca1a63034cb6/ccm-ugc/efa5cf51c0711fafc61e73f90e05bc12-s-.png');
+(19, 'aze', 'aze', 'aze', 0, 'https://img-19.ccm2.net/nk1eHVlqfdoTvhQItQ2WE6Jbj70=/91a1e9868ec347bcb203ca1a63034cb6/ccm-ugc/efa5cf51c0711fafc61e73f90e05bc12-s-.png'),
+(20, 'azee', 'azee', 'azee', 0, 'https://img-19.ccm2.net/nk1eHVlqfdoTvhQItQ2WE6Jbj70=/91a1e9868ec347bcb203ca1a63034cb6/ccm-ugc/efa5cf51c0711fafc61e73f90e05bc12-s-.png'),
+(21, 'azeee', 'azeee', 'azeee', 0, 'https://img-19.ccm2.net/nk1eHVlqfdoTvhQItQ2WE6Jbj70=/91a1e9868ec347bcb203ca1a63034cb6/ccm-ugc/efa5cf51c0711fafc61e73f90e05bc12-s-.png');
 
 --
 -- Contraintes pour les tables déchargées
