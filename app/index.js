@@ -7,8 +7,16 @@ let io = require('socket.io')(http);
 let twig = require('twig');
 let bodyParser = require('body-parser');
 let session = require('express-session');
-let mysql = require('mysql');
-let con = mysql.createConnection({
+// let mysql = require('mysql');
+// let con = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: '',
+//   database: 'portefolio',
+// });
+
+let mariadb = require('mariadb');
+let con = mariadb.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
