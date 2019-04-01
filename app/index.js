@@ -17,7 +17,7 @@ let session = require('express-session');
 
 let mariadb = require('mariadb');
 let con = mariadb.createPool({
-  host: '51.38.236.160:80',
+  host: '51.38.236.160',
   port: 80,
   user: 'root',
   password: '',
