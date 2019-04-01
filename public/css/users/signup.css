@@ -1,0 +1,33 @@
+.signup {
+    position: relative;
+    top: 19rem;
+}
+
+.btn-signup{
+    position: relative;
+    top: 3rem;
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+    width: 18rem;
+}
+
+
+
+.alert-signup{
+    position: relative;
+    bottom: 58rem;
+}
+
+#alert.ng-enter,#alert.ng-leave{
+    -webkit-transition: opacity ease-in-out 1s;
+    transition: opacity ease-in-out 1s;   
+}
+
+#alert.ng-enter,#alert.ng-leave.ng-leave-active{
+    opacity: 0;
+}
+
+#alert.ng-leave,#alert.ng-enter.ng-enter-active{
+    opacity: 1;
+}

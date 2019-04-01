@@ -1,0 +1,175 @@
+{% include 'templates/header.html' %}
+
+
+<div id="wrapper">
+    {% include 'templates/nav.html' %}
+
+    <!-- <div ng-controller="worldchat">
+    <ul id="messages">
+        <li ng-repeat="msg in messages" ng-cloak>
+            {[{ msg.username + ': ' + msg.message }]}
+            <span style="float: right;">{[{ msg.created_at }]}</span>
+        </li>
+    </ul>
+    <form action="#">
+        <input id="m" autocomplete="off" ng-model="message" my-enter="sendMsg();" />
+        <button type="button" ng-click="sendMsg();">Envoyer</button>
+    </form>
+</div> -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+        </button>
+        <!-- Content -->
+        <div class="container">
+            <canvas id="c"></canvas>
+            <h1 class="worldchat">Worldchat</h1>
+
+            <div class="container">
+                <div class="container-fluid" ng-controller="worldchat">
+                    <div class="container ng-scope">
+                        <div class="card m-b-0" id="messages-main" style="boxd-shadow:0 0 40px 1px #c9cccd;">
+                            <div class="ms-menu" style="overflow:scroll; overflow-x: hidden;" id="ms-scrollbar">
+                                <div ng-repeat="user in users" ng-cloak>
+                                    <div class="listview lv-user m-t-20">
+                                        <div class="lv-item media active">
+                                            <div class="lv-avatar pull-left">
+                                                <img class="img-connected" src="{[{ user.img_url}]}" alt="">
+                                            </div>
+
+                                            <div class="media-body">
+                                                <div class="lv-title">
+                                                    <a href="/profil">{[{user.username}]}</a>
+                                                </div>
+                                                <div class="lv-small"> Connected </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ms-body">
+                                <div class="listview lv-message">
+                                    <div class="lv-header-alt clearfix">
+                                        <!-- <div id="ms-menu-trigger">
+                                            <div class="line-wrap">
+                                                <div class="line top"></div>
+                                                <div class="line center"></div>
+                                                <div class="line bottom"></div>
+                                            </div>
+                                        </div> -->
+                                        <div class="lvh-label hidden-xs col-md-6">
+                                            <!-- <div class="lv-avatar pull-left">
+                                            <img src="./images/bhai.jpg" alt="">
+                                        </div> -->
+                                            <span class="c-black userinfo" id="{{ id_user }}">{{username}}
+                                                <span style="left: 5rem; position: absolute; top: 1.3rem; width: 8px; height: 8px; line-height: 8px; border-radius: 50%; background-color: #80d3ab;"></span>
+                                            </span>
+                                        </div>
+                                        <!-- <ul class="lv-actions actions list-unstyled list-inline">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-check"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-clock-o"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="dropdown" href="#">
+                                                    <i class="fa fa-list"></i>
+                                                </a>
+                                                <ul class="dropdown-menu user-detail" role="menu">
+                                                    <li>
+                                                        <a href="">Latest</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">Oldest</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="dropdown" href="#" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </a>
+                                                <ul class="dropdown-menu user-detail" role="menu">
+                                                    <li>
+                                                        <a href="">Delete Messages</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul> -->
+                                    </div>
+                                    <div class="lv-body" id="ms-scrollbar" style="overflow:scroll; overflow-x: hidden; height: 29.7rem;"
+                                        scroll-glue="glued">
+                                        <div ng-repeat="msg in messages | orderBy: '-id_message':true" ng-cloak>
+                                            <div ng-if="!msg.myself">
+                                                <div class="lv-item media">
+                                                    <div class="media-body">
+                                                        <span class="username-message-left">
+                                                            <a href="/profil" class="username-chat-left">{[{
+                                                                msg.username }]}</a>
+                                                            <div class="lv-avatar pull-left">
+                                                                <img src="{[{ msg.img_url}]}" alt="">
+                                                            </div>
+                                                        </span>
+                                                        <div class="ms-item">
+                                                            {[{ msg.message }]}
+                                                        </div>
+                                                        <small class="ms-date">
+                                                            <span class="glyphicon glyphicon-time"></span>&nbsp; {[{
+                                                            msg.created_at }]}</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div ng-if="msg.myself">
+                                                <div class="lv-item media right">
+
+                                                    <div class="media-body">
+                                                        <span class="username-message-right">
+                                                            <a href="/profil" class="username-chat-right">{[{
+                                                                msg.username }]}</a>
+                                                            <div class="lv-avatar pull-right">
+                                                                <img src="{[{ msg.img_url}]}" alt="">
+                                                            </div>
+                                                        </span>
+                                                        <div class="ms-item">
+                                                            {[{ msg.message }]}
+                                                        </div>
+                                                        <small class="ms-date">
+                                                            <span class="glyphicon glyphicon-time"></span>&nbsp; {[{
+                                                            msg.created_at }]}</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+                                    <div class="lv-footer ms-reply">
+                                        <textarea rows="10" placeholder="Ecrivez votre message..." my-enter="sendMsg(); glued = true;"
+                                            ng-model="message"></textarea>
+                                        <button class="" ng-click="sendMsg(); glued = true;">
+                                            <span class="glyphicon glyphicon-send send"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+</div>
+
+{% include 'templates/footer.html' %}

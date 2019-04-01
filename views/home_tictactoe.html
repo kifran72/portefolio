@@ -1,0 +1,59 @@
+{% include 'templates/header.html' %}
+
+
+<div id="wrapper">
+    {% include 'templates/nav2.html' %}
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+        </button>
+        <!-- Content -->
+        <div class="container">
+                <div class="wrapper">
+                        <ul class="bg-bubbles">
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                        </ul>
+                        </div>
+            <div class="container" id="welcome">
+                <div class="title-page" style="
+                    position: relative;
+                    text-align: center;">
+                    <h1>{{ message }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->
+
+    <!-- Perso -->
+    <script src="js/main.js"></script>
+    <script src="js/users/loginUser.js"></script>
+    <script src="js/users/loginuser_tictactoe.js"></script>
+
+    <script src="js/users/signup.js"></script>
+    <script src="js/users/profil.js"></script>
+    
+    <!-- Directives -->
+    <script src="js/angular/directives/scrollglue.js"></script>
+
+    <!-- socket.io -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/worldchat/chat.js"></script>
+
+    
+</body>
+</html>

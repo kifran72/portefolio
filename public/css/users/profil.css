@@ -1,0 +1,172 @@
+/* .profil{
+    
+} */
+
+/* TOP NAV */
+.user-row {
+    margin-bottom: 14px;
+}
+
+.user-row:last-child {
+    margin-bottom: 0;
+}
+
+.dropdown-user {
+    margin: 13px 0;
+    padding: 5px;
+    height: 100%;
+}
+
+.dropdown-user:hover {
+    cursor: pointer;
+}
+
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+
+
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}
+.toppad
+{
+    margin-top:20px;
+}
+
+
+.infoUser{
+    position: relative;
+    top: -21rem;
+    right: -9rem;
+    height: 9.2rem;
+    width: 13rem;
+    padding: 2rem;
+    background: grey;
+    font-size: 1.4rem;
+}
+
+.username{
+    position: absolute;
+    top: 0.7rem;
+
+}
+
+
+.welcome-profil{
+    text-align: center;
+    position: relative;
+    top: -12.7rem;
+    width: 100%;
+}
+
+.message-profil{
+    color: #d1d1d1;
+    font-size: 6.9rem;
+}
+
+.img-user{
+    width: 9rem;
+    height: auto;
+    position: relative;
+    top: -11.8rem;
+    left: 0rem;
+}
+
+.form-profil{
+    height: 0rem;
+    width: 21rem;
+    position: absolute;
+    top: 10rem;
+    background-color: white;
+}
+
+
+
+#username{
+    position: relative;
+    top: 1.8rem;
+    font-size: 1.3rem;
+}
+
+/* PROFIL */
+
+.profil{
+    position: relative;
+    top: 16rem;
+    width: 100%;
+    height: 51rem;
+    background-color: grey;
+}
+
+.infoProfil {
+    position: relative;
+    top: -23rem;
+    left: 65rem;
+    width: 33rem;
+    height: 14rem;
+}
+
+.img-profil {
+    position: relative;
+    left: 28.4rem;
+    top: -2rem;
+    width: 23%;
+}
+
+.username-profil {
+    position: relative;
+    top: 4rem;  
+}
+
+.btnProfil {
+    position: relative;
+    right: 15rem;
+}
+
+#modalProfil * {
+    color: black !important;
+}
+
+.modal-content {
+    width: 28rem !important;
+}
+
+.img-profil-modal {
+    margin-top: 2rem;
+    margin-left: 3rem;
+    width: 18rem;
+}
+
+button {
+    pointer: cursor;
+  }
+  
+  input[type=file] {
+    width: 500px;
+    height: 500px;
+    background: black;
+  }
+
+@media only screen and (max-width: 375px) {
+    .img-profil {
+        position: relative;
+        left: 8.4rem;
+        top: -4rem;
+        width: 50%;
+    }
+
+    .infoProfil {
+        position: relative;
+        text-align: center;
+        top: 2rem;
+        left: 0;
+        width: 33rem;
+        height: 14rem;
+    }
+}
+

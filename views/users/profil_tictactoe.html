@@ -1,0 +1,77 @@
+{% include 'templates/header.html' %}
+
+
+<div id="wrapper">
+    {% include 'templates/nav2.html' %}
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+        </button>
+        <!-- Content -->
+        <div class="container">
+
+                <div class="wrapper">
+                        <ul class="bg-bubbles">
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                          <li></li>
+                        </ul>
+                        </div>
+            <div class="profil" ng-controller='profil_tictactoe'>
+
+                
+        <form action="/getFile" enctype="multipart/form-data" method="post">
+            <!-- <input type="file" name="file-to-upload">
+            <input type="submit" value="Upload"> -->
+          </form>
+                <div class="welcome-profil">
+                    <h1 class="message-profil">{{ message }}</h1>
+                </div>
+                <img class="img-profil" src="{{ image }}" alt="image">
+                  <!-- Trigger the modal with a button -->
+                <!-- <button type="button" class="btn btn-info btn-lg btnProfil" data-toggle="modal" data-target="#modalProfil">Changer de photo</button> -->
+
+                <!-- Modal -->
+                <!-- <div class="modal fade" id="modalProfil" role="dialog">
+                    <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                                <form action="/file-upload" method="POST" class="dropzone">
+                                    <div class="fallback">
+                                      <input name="file" type="file" multiple />
+                                    </div>
+                                  </form>
+                                  
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div> -->
+                <div class="infoProfil">
+                    <div class="mail-profil">
+                        <label for="mail-profil">Addresse mail</label>
+                        <p id="mail-profil">{{ mail }}</p>
+                    </div>
+                    <div class="username-profil">
+                        <label for="username-profil">Pseudo</label>
+                        <p id="username-profil">{{ username }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    {% include 'templates/footer.html' %}
