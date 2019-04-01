@@ -16,7 +16,7 @@ let session = require('express-session');
 // });
 
 let mariadb = require('mariadb');
-let con = mariadb.createConnection({
+let con = mariadb.createPool({
   host: 'localhost',
   user: 'root',
   password: '',
@@ -38,7 +38,7 @@ app.post('/getFile', upload.single('file-to-upload'), (req, res) => {
 });
 
 
-con.connect(function(err) {
+con.getConnection(function(err) {
   if (err) throw err;
   console.log('BDD Connected!');
 });
