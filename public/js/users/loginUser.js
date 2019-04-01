@@ -37,7 +37,7 @@ app.controller('loginUser', ($scope, $http, $window, $timeout) => {
         $scope.spinner = true;
         $timeout(() => {
           $scope.spinner = false;
-          $window.location.href = '/worldchat_home';
+          $window.location.href = '/login';
         }, 2000);
       } else {
         if (username === undefined && password === undefined) {
