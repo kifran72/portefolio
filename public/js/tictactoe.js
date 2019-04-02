@@ -91,7 +91,7 @@ function matchNul(pions) {
   return true;
 }
 
-var Afficheur = function(element) {
+let Afficheur = function(element) {
   let affichage = element;
 
   function setText(message) {

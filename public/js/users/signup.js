@@ -46,7 +46,7 @@ app.controller('signup', function($scope, $http, $window, $timeout) {
           $scope.spinner = true;
           $timeout(() => {
             $scope.spinner = false;
-            $window.location.href = '/tictactoe';
+            $window.location.href = '/login';
           }, 2000);
         } else {
           $scope.getAlert('warning', 'Attention !', 'Pseudo ' + rep.data.username + ' déja existant !');
