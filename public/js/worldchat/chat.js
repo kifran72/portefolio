@@ -6,7 +6,7 @@ app.controller('worldchat', function($scope, $http, $window) {
 
   let id_user = angular.element('.userinfo')[0].id;
   // let socket = io.connect('localhost:3000');
-  let socket = io.connect('localhost');
+  let socket = io.connect('51.38.236.160:80');
 
 
   $http.get('worldchat/getMessages').then((response) => {
@@ -28,7 +28,7 @@ app.controller('worldchat', function($scope, $http, $window) {
 
   socket.on('add user', (users) => {
     $scope.users = users;
-
+    console.log(users);
     $scope.$apply();
   });
 
