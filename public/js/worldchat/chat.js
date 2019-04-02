@@ -26,8 +26,10 @@ app.controller('worldchat', function($scope, $http, $window) {
 
 
   socket.on('add user', (users) => {
+    console.log(users);
     $scope.users = users;
     $scope.$apply();
+    location.reload();
   });
 
   socket.on('remove user', (users) => {
