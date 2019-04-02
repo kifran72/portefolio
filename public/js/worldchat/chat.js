@@ -3,13 +3,11 @@ app.controller('worldchat', function($scope, $http, $window) {
   $scope.messages = [];
   $scope.users = [];
   $scope.glued = true;
-
+  console.log($scope.users);
   let id_user = angular.element('.userinfo')[0].id;
   // let socket = io.connect('localhost:3000');
   let socket = io.connect('http://51.38.236.160:80');
-  socket.on('connect', function(data) {
-    socket.emit('join', 'Hello World from client');
-  });
+
 
   $http.get('worldchat/getMessages').then((response) => {
     if (response.data === {}) return;
