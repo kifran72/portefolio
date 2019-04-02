@@ -5,7 +5,7 @@ app.controller('worldchat', function($scope, $http, $window) {
   $scope.glued = true;
 
   let id_user = angular.element('.userinfo')[0].id;
-  let socket = io.connect('localhost:3000');
+  let socket = io.connect('localhost:80');
 
 
   $http.get('worldchat/getMessages').then((response) => {
