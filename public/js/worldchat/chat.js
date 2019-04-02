@@ -3,7 +3,6 @@ app.controller('worldchat', function($scope, $http, $window) {
   $scope.messages = [];
   $scope.users = [];
   $scope.glued = true;
-  console.log($scope.users);
   let id_user = angular.element('.userinfo')[0].id;
   // let socket = io.connect('localhost:3000');
   let socket = io.connect('http://51.38.236.160:80');
@@ -28,14 +27,14 @@ app.controller('worldchat', function($scope, $http, $window) {
 
   socket.on('add user', (users) => {
     $scope.users = users;
-    console.log(users);
     $scope.$apply();
+    location.reload();
   });
 
   socket.on('remove user', (users) => {
     $scope.users = users;
-
     $scope.$apply();
+    location.reload();
   });
 
   socket.on('echo', (data) => {

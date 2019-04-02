@@ -24,27 +24,7 @@
                     <h1 class="message-profil">{{ message }}</h1>
                 </div>
                 <img class="img-profil" src="{{ image }}" alt="image">
-                  <!-- Trigger the modal with a button -->
-                <button type="button" class="btn btn-info btn-lg btnProfil" data-toggle="modal" data-target="#modalProfil">Changer de photo</button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="modalProfil" role="dialog">
-                    <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                                <form action="/file-upload" method="POST" class="dropzone">
-                                    <div class="fallback">
-                                      <input name="file" type="file" multiple />
-                                    </div>
-                                  </form>
-                                  
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                    </div>
-                </div>
+             
                 <div class="infoProfil">
                     <div class="mail-profil">
                         <label for="mail-profil">Addresse mail</label>
