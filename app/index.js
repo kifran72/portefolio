@@ -76,10 +76,10 @@ app.use(session({
 // ROUTES
 require('./routes/index').init(app, session, con, io, http, connectedUsers, moment);
 
-// // ALL OTHER ROUTES REDIRECT TO '/'
-// app.get('*', function(req, res) {
-//   res.redirect('/');
-// });
+// ALL OTHER ROUTES REDIRECT TO '/'
+app.get('*', function(req, res) {
+  res.redirect('/');
+});
 
 
 module.exports = http;
