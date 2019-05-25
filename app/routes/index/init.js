@@ -1,17 +1,17 @@
 /**
  * @param  {Object} app
  */
-function initIndex(app, session, con, io, server, connectedUsers, moment) {
+initIndex = (app, con, io, moment) => {
   let users = [];
 
-  app.get('/', function(req, res) {
+  app.get('/', (req, res) => {
     return res.render('index', {
       titles: 'Accueil',
       message: 'Porte folio',
     });
   });
 
-  app.get('/login', function(req, res) {
+  app.get('/login', (req, res) => {
     if (req.session.connected) return res.redirect('home_worldchat');
     return res.render('users/login', {
       titles: 'Login',
@@ -19,7 +19,7 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
     });
   });
 
-  app.get('/login_tictactoe', function(req, res) {
+  app.get('/login_tictactoe', (req, res) => {
     if (req.session.connected) return res.redirect('home_tictactoe');
     return res.render('users/login_tictactoe', {
       titles: 'Login',
@@ -27,11 +27,11 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
     });
   });
 
-  app.post('/login', function(req, res) {
+  app.post('/login', (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
     let search = 'SELECT * FROM users WHERE username = ? AND password = ?';
-    con.query(search, [username, password], function(err, result, fields) {
+    con.query(search, [username, password], (err, result, fields) => {
       if (err) throw err;
       if (result.length != 0) {
         req.session.connected = true;
@@ -52,7 +52,7 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
     });
   });
 
-  app.get('/logout', function(req, res) {
+  app.get('/logout', (req, res) => {
     if (!req.session.connected) {
       return res.render('users/login', {
         message: 'Connectez-vous',
@@ -66,7 +66,7 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
       }), 1);
       io.sockets.emit('remove user', users);
     }
-    req.session.destroy(function(err) {
+    req.session.destroy((err) => {
       if (err) throw err;
       return res.render('users/login', {
         message: 'Bienvenue',
@@ -74,7 +74,7 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
     });
   });
 
-  app.get('/logout_tictactoe', function(req, res) {
+  app.get('/logout_tictactoe', (req, res) => {
     if (!req.session.connected) {
       return res.render('users/login_tictactoe', {
         message: 'Connectez-vous',
@@ -88,7 +88,7 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
       }), 1);
       io.sockets.emit('remove user', users);
     }
-    req.session.destroy(function(err) {
+    req.session.destroy((err) => {
       if (err) throw err;
       return res.render('users/login_tictactoe', {
         message: 'Bienvenue',
@@ -96,27 +96,27 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
     });
   });
 
-  app.get('/signup', function(req, res) {
+  app.get('/signup', (req, res) => {
     res.render('users/signup', {
       message: 'Bienvenue',
     });
   });
 
 
-  app.get('/signup_tictactoe', function(req, res) {
+  app.get('/signup_tictactoe', (req, res) => {
     res.render('users/signup_tictactoe', {
       message: 'Bienvenue',
     });
   });
 
-  app.post('/signup', function(req, res) {
+  app.post('/signup', (req, res) => {
     let mail = req.body.mail;
     let username = req.body.username;
     let password = req.body.password;
     let accountType = 0;
     let imgUrl = 'https://img-19.ccm2.net/nk1eHVlqfdoTvhQItQ2WE6Jbj70=/91a1e9868ec347bcb203ca1a63034cb6/ccm-ugc/efa5cf51c0711fafc61e73f90e05bc12-s-.png';
     let search = 'SELECT username, mail_users FROM users WHERE username = ? AND mail_users = ?';
-    con.query(search, [username, mail], function(err, result) {
+    con.query(search, [username, mail], (err, result) => {
       console.log('result start:', result);
 
       if (err) throw err;
@@ -124,7 +124,7 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
         console.log('result: true', result);
 
         let sql = 'INSERT INTO users(username, mail_users, password, account_type, img_url) VALUES(?,?,?,?,?)';
-        con.query(sql, [username, mail, password, accountType, imgUrl], function(err, result) {
+        con.query(sql, [username, mail, password, accountType, imgUrl], (err, result) => {
           if (err) throw err;
           return res.send({
             username: result.username,
@@ -143,7 +143,7 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
     });
   });
 
-  app.get('/worldchat_home', function(req, res) {
+  app.get('/worldchat_home', (req, res) => {
     if (!req.session.connected) return res.redirect('/login');
     return res.render('home_worldchat', {
       message: 'Bonjour',
@@ -154,7 +154,7 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
   });
 
 
-  app.get('/worldchat', function(req, res) {
+  app.get('/worldchat', (req, res) => {
     if (!req.session.connected) return res.redirect('/login');
     return res.render('worldChat', {
       message: 'hello',
@@ -164,7 +164,7 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
     });
   });
 
-  app.get('/worldchat/getMessages', function(req, res) {
+  app.get('/worldchat/getMessages', (req, res) => {
     let search = 'SELECT *, u.img_url FROM messages m, users u WHERE m.id_user=u.id_user LIMIT 30';
 
     let userCon = users.find((userInfo) => userInfo.id_user === req.session.id_user);
@@ -181,7 +181,7 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
       io.sockets.emit('add user', users);
     }
 
-    con.query(search, function(err, result, fields) {
+    con.query(search, (err, result, fields) => {
       if (err) throw err;
       if (result.length != 0) {
         let messages = [];
@@ -207,13 +207,13 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
     });
   });
 
-  app.post('/worldchat/sendMessage', function(req, res) {
+  app.post('/worldchat/sendMessage', (req, res) => {
     let message = req.body.message;
     let id_user = req.session.id_user;
 
 
     let search = 'INSERT INTO messages(id_user, message, created_at) VALUES(?,?,NOW())';
-    con.query(search, [id_user, message], function(err, result, fields) {
+    con.query(search, [id_user, message], (err, result, fields) => {
       if (err) throw err;
 
       io.sockets.emit('echo', {
@@ -232,7 +232,7 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
     });
   });
 
-  app.get('/tictactoe', function(req, res) {
+  app.get('/tictactoe', (req, res) => {
     if (!req.session.connected) return res.redirect('/login_tictactoe');
     return res.render('home_tictactoe', {
       message: 'Bonjour',
@@ -242,7 +242,7 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
     });
   });
 
-  app.get('/tictactoe-game', function(req, res) {
+  app.get('/tictactoe-game', (req, res) => {
     if (!req.session.connected) return res.redirect('/login_tictactoe');
     return res.render('tictactoe', {
       message: 'Bonjour',
@@ -252,7 +252,7 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
     });
   });
 
-  app.get('/profil_tictactoe', function(req, res) {
+  app.get('/profil_tictactoe', (req, res) => {
     if (!req.session.connected) {
       return res.render('users/login_tictactoe', {
         titles: 'Profil',
@@ -267,7 +267,7 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
     });
   });
 
-  app.get('/profil', function(req, res) {
+  app.get('/profil', (req, res) => {
     if (!req.session.connected) {
       return res.render('users/login', {
         titles: 'Profil',
@@ -281,6 +281,6 @@ function initIndex(app, session, con, io, server, connectedUsers, moment) {
       mail: req.session.mail_users,
     });
   });
-}
+};
 
 module.exports = initIndex;

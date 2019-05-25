@@ -1,6 +1,5 @@
 let express = require('express');
 let app = express();
-let connectedUsers = {};
 let moment = require('moment');
 let http = require('http').Server(app);
 let io = require('socket.io')(http);
@@ -11,30 +10,14 @@ let mysql = require('mysql');
 let con = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'toor',
+  password: '',
   database: 'portefolio',
 });
-
-// let mariadb = require('mariadb');
-// let con = mariadb.createPool({
-//   host: 'localhost',
-//   user: 'root',
-//   password: 'toor',
-//   database: 'portefolio',
-// });
 
 con.connect(function(err) {
   if (err) throw err;
   console.log('BDD Connected!');
 });
-
-// con.getConnection()
-//     .then(() => {
-//       console.log('BDD Connected!');
-//     }).catch((err) => {
-//       console.log('Not Connected!', err);
-//     });
-
 
 require('../config/socket')(io);
 
@@ -56,11 +39,9 @@ app.use(bodyParser.urlencoded({
 // parse application/json
 app.use(bodyParser.json());
 
-app.use('/vendor', express.static('public/vendor'));
 app.use('/js', express.static('public/js'));
 app.use('/css', express.static('public/css'));
 app.use('/img', express.static('public/img'));
-app.use('/assets', express.static('public'));
 
 // initialise une session
 app.use(session({
@@ -74,7 +55,7 @@ app.use(session({
 
 
 // ROUTES
-require('./routes/index').init(app, session, con, io, http, connectedUsers, moment);
+require('./routes/index').init(app, con, io, moment);
 
 // ALL OTHER ROUTES REDIRECT TO '/'
 app.get('*', function(req, res) {
