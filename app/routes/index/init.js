@@ -281,6 +281,36 @@ initIndex = (app, con, io, moment) => {
       mail: req.session.mail_users,
     });
   });
+
+  app.post('/getInfo', (req, res) => {
+    return res.send([
+      {
+        id: 1,
+        date: new Date,
+        nom: 'Ticket 1'
+      },
+      {
+        id: 2,
+        date: new Date,
+        nom: 'Ticket 2'
+      },
+      {
+        id: 3,
+        date: new Date,
+        nom: 'Ticket 3'
+      },
+      {
+        id: 4,
+        date: new Date,
+        nom: 'Ticket 4'
+      },
+      {
+        id: 5,
+        date: new Date,
+        nom: 'Ticket 5'
+      }
+    ]);
+  })
 };
 
 module.exports = initIndex;
